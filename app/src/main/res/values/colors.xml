@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="plancha_background">#F3F6F8</color>
+    <color name="plancha_surface">#FFFFFFFF</color>
+    <color name="plancha_primary">#145A72</color>
+    <color name="plancha_primary_dark">#0B3D4E</color>
+    <color name="plancha_accent">#F39C12</color>
+    <color name="plancha_text">#17202A</color>
+    <color name="plancha_text_secondary">#5D6D7E</color>
+    <color name="plancha_success">#1E8449</color>
+    <color name="plancha_warning">#B9770E</color>
+    <color name="plancha_error">#B03A2E</color>
+    <color name="plancha_neutral">#E8EEF1</color>
+</resources>

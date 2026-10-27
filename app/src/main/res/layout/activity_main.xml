@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/plancha_background"
+    android:fillViewport="true"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="32dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/plancha_primary_dark"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="2dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CONTROL DE PLANCHA"
+                    android:textColor="#B9E4F2"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Panel local"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Control directo al ESP32, sin Internet ni Firebase"
+                    android:textColor="#D5E8EE"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/txtConnection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_connection_status"
+            android:gravity="center"
+            android:text="Buscando ESP32…"
+            android:textColor="@color/plancha_text_secondary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@color/plancha_surface"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="1dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Conexión rápida"
+                    android:textColor="@color/plancha_text"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="3dp"
+                    android:text="1. Escanea el QR impreso y acepta la red Plancha-ESP32.\n2. Regresa a esta app; se conectará automáticamente.\n3. “Sin Internet” es normal en esta red local."
+                    android:textColor="@color/plancha_text_secondary"
+                    android:textSize="14sp" />
+                <Button
+                    android:id="@+id/btnWifiSettings"
+                    style="@style/ControlButton"
+                    android:text="Abrir ajustes de Wi‑Fi" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+                    <EditText
+                        android:id="@+id/editDeviceUrl"
+                        android:layout_width="0dp"
+                        android:layout_height="52dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/plancha_primary"
+                        android:hint="http://192.168.4.1"
+                        android:inputType="textUri"
+                        android:paddingStart="8dp"
+                        android:singleLine="true"
+                        android:textSize="14sp" />
+                    <Button
+                        android:id="@+id/btnConnect"
+                        style="@style/PrimaryButton"
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Conectar" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView style="@style/SectionTitle" android:text="Lecturas en tiempo real" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/plancha_surface"
+                app:cardCornerRadius="16dp"
+                app:strokeColor="#DDE5E8"
+                app:strokeWidth="1dp">
+                <TextView
+                    android:id="@+id/txtTemperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:minHeight="86dp"
+                    android:padding="14dp"
+                    android:text="Temperatura\n-- °C"
+                    android:textColor="@color/plancha_text"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/plancha_surface"
+                app:cardCornerRadius="16dp"
+                app:strokeColor="#DDE5E8"
+                app:strokeWidth="1dp">
+                <TextView
+                    android:id="@+id/txtPressure"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:minHeight="86dp"
+                    android:padding="14dp"
+                    android:text="Presión\n-- bar"
+                    android:textColor="@color/plancha_text"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtPressureVoltage"
+            style="@style/TelemetryCard"
+            android:text="Señal de presión: -- V"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/txtMotor"
+            style="@style/TelemetryCard"
+            android:text="Motor: detenido"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView style="@style/SectionTitle" android:text="Movimientos de la plancha" />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/plancha_surface"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="1dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="14dp">
+                <Button android:id="@+id/btnRelay1" style="@style/ControlButton" android:text="Bajar: --" />
+                <Button android:id="@+id/btnRelay2" style="@style/ControlButton" android:text="Subir: --" />
+                <Button android:id="@+id/btnRelay3" style="@style/ControlButton" android:text="Modo: --" />
+                <Button android:id="@+id/btnRelay4" style="@style/ControlButton" android:text="Parar: --" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView style="@style/SectionTitle" android:text="Electroválvula" />
+        <Button
+            android:id="@+id/btnValve"
+            style="@style/ControlButton"
+            android:minHeight="60dp"
+            android:text="Electroválvula: --" />
+
+        <TextView style="@style/SectionTitle" android:text="Motor paso a paso · máximo 3 s" />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/plancha_surface"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="1dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+                <Button
+                    android:id="@+id/btnLeft"
+                    style="@style/ControlButton"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:text="← Izquierda" />
+                <Button
+                    android:id="@+id/btnStop"
+                    style="@style/PrimaryButton"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/plancha_error"
+                    android:text="Detener" />
+                <Button
+                    android:id="@+id/btnRight"
+                    style="@style/ControlButton"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:text="Derecha →" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <Button
+            android:id="@+id/btnCalibrate"
+            style="@style/ControlButton"
+            android:layout_marginTop="20dp"
+            android:text="Calibrar presión en cero" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:gravity="center"
+            android:text="Calibra únicamente con la entrada neumática sin presión."
+            android:textColor="@color/plancha_error"
+            android:textSize="13sp" />
+    </LinearLayout>
+</ScrollView>
